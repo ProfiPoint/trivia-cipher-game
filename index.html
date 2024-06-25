@@ -1,0 +1,527 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Trivia Cipher</title>
+    <style>
+        .box {
+            width: 1050px;
+            height: 740px;
+            background-color: white;
+            border: 10px solid black;
+            margin: 10px auto; /* center the item in the x direction */
+        }
+        #tebox {
+            width: 1050px;
+            height: 1500px;
+            background-color: white;
+            border: 10px solid black;
+            margin: 10px auto; /* center the item in the x direction */
+            font-family: "Calibri";
+            font-size: 35px;
+
+        }
+        #teboxa {
+            width: 1050px;
+            height: 1500px;
+            background-color: white;
+            border: 10px solid black;
+            margin: 10px auto; /* center the item in the x direction */
+            font-family: "Calibri";
+            font-size: 25px;
+            overflow: hidden;
+        }
+        .subbox {
+            background-color: white;
+            border: 5px solid black;
+            margin: 20px; /* center the item in the x direction */
+            /* center text in y coordinate and align it to the left */
+            display: flex;  
+            align-items: center;
+            margin-bottom: 0px;
+        }
+        .suubox{
+            height: 181px;
+            background-color: white;
+            border: 2px solid gray;
+
+            margin: 0px;
+        }
+        .qbox{
+            background-color: white;
+            border: 5px solid black;
+            margin: 20px; /* center the item in the x direction */
+            /* center text in y coordinate and align it to the left */
+            align-items: center;
+            margin-bottom: 0px;
+        }
+        .alight-items-in-x {
+            display: flex;
+            justify-content: center;
+            /*give 5px space in between*/
+            gap: 10px;
+        }
+
+        .alight-items-in-x2 {
+            display: flex;
+            justify-content: center;
+            /*give 5px space in between*/
+            gap: 0px;
+        }
+        .alight-items-in-y {
+            margin-top: 8px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            /*give 5px space in between*/
+            border: 5px solid black;
+
+        }
+        .noutl{
+            border: none;
+        }
+        #name{
+            width: 600px;
+            height: 75px;
+            padding: 10px;
+            margin-right: 0px;
+            font-family: "Calibri"
+        }
+        #firstQ{
+            width: 350px;
+            height: 75px;
+            padding: 10px;
+            margin-left: 0px;
+            font-family: "Calibri"
+        }
+        #checkpoint{
+            width: 311px;
+            height: 30px;
+            padding: 5px;
+            margin-top: 8px;
+            margin-left: 0px;
+            margin-right: 0px;
+            font-family: "Calibri"
+        }
+        #rules{
+            width: 982px;
+            height: 360px;
+            padding: 10px;
+            margin-right: 0px;
+            margin-top: 8px;
+            font-family: "Calibri";
+            text-align: center;
+        }
+        #cipher{
+            width: 982px;
+            height: 50px;
+            padding: 10px;
+            margin-top: 8px;
+            margin-right: 0px;
+            font-family: "Calibri";
+        }
+        #qid{
+            width: 120px;
+            height: 59px;
+            padding: 5px;
+            margin-top: 8px;
+            margin-left: 0px;
+            margin-right: 0px;
+            text-align: center;
+            color: purple;
+            font-family: "Comic Sans MS";
+            font-weight: bold;
+        }
+        #qletter{
+            width: 60px;
+            height: 59px;
+            padding: 5px;
+            margin-top: 8px;
+            margin-left: 0px;
+            margin-right: 0px;
+            text-align: center;
+            color: orangered;
+            font-family: "Courier New";
+            font-weight: bold;
+        }
+        #qname{
+            width: 770px;
+            height: 59px;
+            padding: 5px;
+            margin-top: 8px;
+            margin-left: 0px;
+            margin-right: 0px;
+            font-family: "Calibri"
+        }
+        #aname{
+            width: 220px;
+            height: 59px;
+            padding: 5px;
+            margin-top: 8px;
+            margin-left: 0px;
+            margin-right: 0px;
+            font-family: "Calibri";
+        }
+        #auser{
+            width: 85px;
+            height: 17px;
+            padding: 5px;
+            margin-top: 0px;
+            margin-left: 0px;
+            margin-right: 0px;
+            margin-bottom: 0px;
+            font-family: "Calibri";
+            font-weight: bold;
+        }
+        #aid{
+            width: 85px;
+            height: 32px;
+            padding: 5px;
+            margin-top: 0px;
+            margin-left: 0px;
+            margin-right: 0px;
+            font-family: "Calibri";
+            font-weight: bold;
+            text-align: center;
+            color: purple;
+            font-family: "Comic Sans MS";
+            font-weight: bold;
+        }
+        #bottomRight{
+            text-align: right;
+            margin-right: 0px;
+            margin-top: 0px;
+            font-family: "Calibri";
+            border: 0px;
+            font-size: 15px;
+            color: gray;
+        }
+        .size-70{
+            font-size: 70px;
+        }
+        .size-60{
+            font-size: 60px;
+        }
+        .size-55{
+            font-size: 55px;
+        }
+        .size-50{
+            font-size: 50px;
+        }
+        .size-45{
+            font-size: 45px;
+        }
+        .size-40{
+            font-size: 40px;
+        }
+        .size-35{
+            font-size: 35px;
+        }
+        .size-30{
+            font-size: 30px;
+        }
+        .size-25{
+            font-size: 25px;
+        }
+        .size-20{
+            font-size: 20px;
+        }
+        .size-15{
+            font-size: 15px;
+        }
+        .size-10{
+            font-size: 10px;
+        }
+    </style>
+</head>
+<body>
+    <!--<div class="box">
+        <div class="alight-items-in-x">
+            <div id="name" class="subbox size-60">
+                Jméno: ProfiPoint
+            </div>
+            <div id="firstQ" class="subbox size-60">
+                [1 otázka]: 29
+            </div>
+        </div>
+        <div class="alight-items-in-x">
+            <div id="checkpoint" class="subbox size-30">
+                Jméno: ProfiPoint
+            </div>
+            <div id="checkpoint" class="subbox size-30">
+                Jméno: ProfiPoint
+            </div>
+            <div id="checkpoint" class="subbox size-30">
+                Jméno: ProfiPoint
+            </div>
+        </div>
+        <div id="rules" class="subbox size-30">
+            TUTO stranu nikomu neukazuj! (2. můžeš) Vše ostatní je povoleno.<br>
+            Cílem je získat 15 písmen. Ta získáš od spoluhráčů před položením otázky.<br>
+            Tvoje 1. otázka je na 2. straně pod odpovídajícím dvojciferným kódem.<br>
+            Vyber odpověď, vydej se za dalším člověkem, sděl mu kód, zapiš písmeno.<br>
+            Nahoře máš napsáno, kdo u tebe má být u jeho 5., 9. a 13. písmena.<br>
+            Až ty získáš 5., 9. a 13. písmeno, můžeš se zeptat člověka, zda jsi správně.<br>
+            Písmena tvoří slova, ale jsou posunutá.Př: (ÝDENHEZK -> HEZKÝDEN)<br>
+            Až získáš všechna písmena (skončíš u sebe) a získáš slova, sděl nám je!<br>
+            Když zjistíš, že tvůj Checkpoint neodpovídá, zkus se poradit nebo vrátit zpět.<br>
+            HODNĚ ŠTĚSTÍ 😄
+        </div>
+        <div id="cipher" class="subbox size-60">
+            KÓD: _ ‎  _ ‎  _ ‎ _ ‎  _ ‎ _ ‎ _ ‎ _ ‎  _ ‎  _ ‎  _ ‎  _ ‎  _ ‎  _ ‎ _
+        </div>
+    </div>
+    <div class="box">
+        <div class="alight-items-in-x">
+            <div id="name" class="subbox size-60">
+                Jméno: ProfiPoint
+            </div>
+            <div id="firstQ" class="subbox size-60">
+                [1 otázka]: 29
+            </div>
+        </div>
+        <div class="alight-items-in-x">
+            <div id="checkpoint" class="subbox size-30">
+                Jméno: ProfiPoint
+            </div>
+            <div id="checkpoint" class="subbox size-30">
+                Jméno: ProfiPoint
+            </div>
+            <div id="checkpoint" class="subbox size-30">
+                Jméno: ProfiPoint
+            </div>
+        </div>
+        <div id="rules" class="subbox size-30">
+            TUTO stranu nikomu neukazuj! (2. můžeš) Vše ostatní je povoleno.<br>
+            Cílem je získat 15 písmen. Ta získáš od spoluhráčů před položením otázky.<br>
+            Tvoje 1. otázka je na 2. straně pod odpovídajícím dvojciferným kódem.<br>
+            Vyber odpověď, vydej se za dalším člověkem, sděl mu kód, zapiš písmeno.<br>
+            Nahoře máš napsáno, kdo u tebe má být u jeho 5., 9. a 13. písmena.<br>
+            Až ty získáš 5., 9. a 13. písmeno, můžeš se zeptat člověka, zda jsi správně.<br>
+            Písmena tvoří slova, ale jsou posunutá.Př: (ÝDENHEZK -> HEZKÝDEN)<br>
+            Až získáš všechna písmena (skončíš u sebe) a získáš slova, sděl nám je!<br>
+            Když zjistíš, že tvůj Checkpoint neodpovídá, zkus se poradit nebo vrátit zpět.<br>
+            HODNĚ ŠTĚSTÍ 😄
+        </div>
+        <div id="cipher" class="subbox size-60">
+            KÓD: _ ‎  _ ‎  _ ‎ _ ‎  _ ‎ _ ‎ _ ‎ _ ‎  _ ‎  _ ‎  _ ‎  _ ‎  _ ‎  _ ‎ _
+        </div>
+    </div>
+
+    <div style="page-break-after: always;"></div>
+
+    <div class="box">
+        <div class="suubox size-30">
+            <div class="alight-items-in-x">
+                <div id="qid" class="qbox size-50">131</div>
+                <div id="qletter" class="qbox size-60">N</div>
+                <div id="qname" class="qbox size-40">Jméno: ProfiPoint</div>
+            </div>
+            <div class="alight-items-in-x2">
+                <div id="aname" class="qbox size-20">Jméno</div>
+                <div class="alight-items-in-y">
+                    <div id="auser" class="qbox size-20 noutl">Jméno</div>
+                    <div id="aid" class="qbox size-30 noutl">1</div>
+                </div>
+                <div id="aname" class="qbox size-20">Jméno</div>
+                <div class="alight-items-in-y">
+                    <div id="auser" class="qbox size-20 noutl">Jméno</div>
+                    <div id="aid" class="qbox size-30 noutl">2</div>
+                </div>
+                <div id="aname" class="qbox size-20">Jmén awdkjaw njwadjpawj od amp wfpmaw mwad aw jdoawjknd aownd oawio</div>
+                <div class="alight-items-in-y">
+                    <div id="auser" class="qbox size-20 noutl">Jméno</div>
+                    <div id="aid" class="qbox size-30 noutl">3</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="box">
+        
+    </div>
+
+    <div style="page-break-after: always;"></div>-->
+
+    <script>
+        function createFirstPage(name,id,checpoints) {
+            // Create the new elements
+            var boxDiv = document.createElement("div");
+            boxDiv.className = "box";
+        
+            var alightItemsDiv1 = document.createElement("div");
+            alightItemsDiv1.className = "alight-items-in-x";
+        
+            var elements1 = [
+                { id: "name", className: "subbox size-60", innerHTML: "Jméno: <b>"+name+"</b>"},
+                { id: "firstQ", className: "subbox size-60", innerHTML: "[1 otázka]: <b style='color: purple'> "+id+"</b>" }
+            ];
+        
+            elements1.forEach(function (element) {
+                var div = document.createElement("div");
+                div.id = element.id;
+                div.className = element.className;
+                div.innerHTML = element.innerHTML;
+                alightItemsDiv1.appendChild(div);
+            });
+        
+            var alightItemsDiv2 = document.createElement("div");
+            alightItemsDiv2.className = "alight-items-in-x";
+        
+            var elements2 = [
+                { id: "checkpoint", className: "subbox size-30", innerHTML: "CP1: (5): "+checpoints[0] },
+                { id: "checkpoint", className: "subbox size-30", innerHTML: "CP2 (9): "+checpoints[1] },
+                { id: "checkpoint", className: "subbox size-30", innerHTML: "CP3 (13): "+checpoints[2] }
+            ];
+        
+            elements2.forEach(function (element) {
+                var div = document.createElement("div");
+                div.id = element.id;
+                div.className = element.className;
+                div.innerHTML = element.innerHTML;
+                alightItemsDiv2.appendChild(div);
+            });
+        
+            var rulesDiv = document.createElement("div");
+            rulesDiv.id = "rules";
+            rulesDiv.className = "subbox size-30";
+            rulesDiv.innerHTML = "TUTO stranu nikomu neukazuj! (2. můžeš) Vše ostatní je povoleno.<br>Cílem je získat 15 písmen. Ta získáš od spoluhráčů před položením otázky.<br>Tvoje 1. otázka je na 2. straně pod odpovídajícím dvojciferným kódem.<br>Vyber odpověď, vydej se za dalším člověkem, sděl mu kód, zapiš písmeno.<br>Nahoře máš napsáno, kdo u tebe má být u jeho 5., 9. a 13. písmena.<br>Až ty získáš 5., 9. a 13. písmeno, můžeš se zeptat člověka, zda jsi správně.<br>Písmena tvoří slova, ale jsou posunutá.Př: (ÝDENHEZK -> HEZKÝDEN)<br>Až získáš všechna písmena (skončíš u sebe) a získáš slova, sděl nám je!<br>Když zjistíš, že tvůj Checkpoint neodpovídá, zkus se poradit nebo vrátit zpět.<br>HODNĚ ŠTĚSTÍ 😄";
+        
+            var cipherDiv = document.createElement("div");
+            cipherDiv.id = "cipher";
+            cipherDiv.className = "subbox size-60";
+            cipherDiv.innerHTML = "KÓD: _ ‎  _ ‎  _ ‎ _ ‎  _ ‎ _ ‎ _ ‎ _ ‎  _ ‎  _ ‎  _ ‎  _ ‎  _ ‎  _ ‎ _";
+        
+            //create element that will stick to the bottom right corner of the box
+            var bottomRightDiv = document.createElement("div");
+            bottomRightDiv.id = "bottomRight";
+            bottomRightDiv.className = "subbox size-30";
+            bottomRightDiv.innerHTML = "profipoint.pro/trivia-cipher-game";
+
+
+            boxDiv.appendChild(alightItemsDiv1);
+            boxDiv.appendChild(alightItemsDiv2);
+            boxDiv.appendChild(rulesDiv);
+            boxDiv.appendChild(cipherDiv);
+            boxDiv.appendChild(bottomRightDiv);
+        
+            // Append the new elements to the document body
+            document.body.appendChild(boxDiv);
+        }
+
+        function addPageBreak() {
+            var pageBreakDiv = document.createElement("div");
+            pageBreakDiv.style = "page-break-after: always;";
+            document.body.appendChild(pageBreakDiv);
+        }
+
+        function addNewBox(questions) {
+            var boxDiv = document.createElement("div");
+            boxDiv.className = "box";
+
+            
+            questions.sort(function(a, b){return 0.5 - Math.random()});
+            for (var q = 0; q < questions.length; q++){
+                var qNow = questions[q];
+
+                var subboxDiv = document.createElement("div");
+                subboxDiv.className = "suubox size-30";
+
+                var alightItemsDiv1 = document.createElement("div");
+                alightItemsDiv1.className = "alight-items-in-x";
+
+                var qidDiv = document.createElement("div");
+                qidDiv.id = "qid";
+                qidDiv.className = "qbox size-50";
+                qidDiv.innerHTML = qNow.id;
+
+                var qletterDiv = document.createElement("div");
+                qletterDiv.id = "qletter";
+                qletterDiv.className = "qbox size-60";
+                qletterDiv.innerHTML = qNow.letter;
+
+                var qnameDiv = document.createElement("div");
+                qnameDiv.id = "qname";
+                qnameDiv.className = "qbox size-25";
+                //make it blod
+                qnameDiv.style.fontWeight = "bold";
+                qnameDiv.style.fontSize = "27px";
+                qnameDiv.innerHTML = qNow.text;
+
+                alightItemsDiv1.appendChild(qidDiv);
+                alightItemsDiv1.appendChild(qletterDiv);
+                alightItemsDiv1.appendChild(qnameDiv);
+
+
+                var alightItemsDiv2 = document.createElement("div");
+                alightItemsDiv2.className = "alight-items-in-x2";
+
+                // sort list:  questions[q].answers randomly
+                questions[q].answers.sort(function(a, b){return 0.5 - Math.random()});
+                
+
+                for (var a = 0; a < questions[q].answers.length; a++) {
+                    var aNow = questions[q].answers[a];
+
+
+
+                    var anameDiv = document.createElement("div");
+                    anameDiv.id = "aname";
+                    anameDiv.className = "qbox size-20";
+                    anameDiv.innerHTML = aNow.text;
+                    anameDiv.style.fontWeight = "bold";
+                    anameDiv.style.fontSize = "26px";
+
+                    var alightItemsInY = document.createElement("div");
+                    alightItemsInY.className = "alight-items-in-y";
+
+
+
+                    var auserDiv = document.createElement("div");
+                    auserDiv.id = "auser";
+                    auserDiv.className = "qbox size-20 noutl";
+                    auserDiv.innerHTML = randomizeString(aNow.nextUser.name);
+
+                    var aidDiv = document.createElement("div");
+                    aidDiv.id = "aid";
+                    aidDiv.className = "qbox size-30 noutl";
+                    aidDiv.innerHTML = aNow.nextId;
+
+                    
+                    alightItemsDiv2.appendChild(anameDiv);
+                    alightItemsDiv2.appendChild(alightItemsInY);
+                    alightItemsInY.appendChild(auserDiv);
+                    alightItemsInY.appendChild(aidDiv);
+                }
+
+                subboxDiv.appendChild(alightItemsDiv1);
+                subboxDiv.appendChild(alightItemsDiv2);
+
+                boxDiv.appendChild(subboxDiv);
+            }
+            document.body.appendChild(boxDiv);
+
+        }
+
+        function createPathBox(text,state) {
+            print(text);
+                var boxDiv = document.createElement("div");
+                boxDiv.className = "box";
+                if (state){
+                    boxDiv.id = "teboxa";
+                } else {
+                    boxDiv.id = "tebox";
+                }
+
+                boxDiv.innerHTML = text;
+                document.body.appendChild(boxDiv);
+            }
+
+    </script>
+
+    <script src="script.js"></script>
+</body>
+
+
+
+
+</html>
